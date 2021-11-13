@@ -1,0 +1,14 @@
+{
+  "all": true,
+  "check-coverage": true,
+  "exclude": [],
+  "include": [
+    "src/**"
+  ],
+  "report-dir": "./build/reports/coverage",
+  "reporter": [
+    "html",
+    "text-summary"
+  ],
+  "temp-dir": "./build/coverage"
+}
