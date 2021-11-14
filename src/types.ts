@@ -1,3 +1,5 @@
+export type None = null | undefined;
+
 export interface Consumer<A> {
   (a: A): void;
 }
@@ -13,3 +15,5 @@ export interface Predicate<T> {
 export interface Supplier<T> {
   (): T;
 }
+
+export type OnFulfilled<T, U = never> = Func<T, U | PromiseLike<U>> | None;
