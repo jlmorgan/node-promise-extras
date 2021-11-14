@@ -1,6 +1,6 @@
 # `rejectIf<T, E>(predicate: Predicate<T>, rejection: Func<T, E>): Func<T, Promise<T>>`
 
-Rejects with the `rejection` if the `predicate` returns `true`.
+Creates a function that rejects with the result of the `rejection` if the `predicate` returns `true`.
 
 ## Arguments
 
@@ -9,7 +9,7 @@ Rejects with the `rejection` if the `predicate` returns `true`.
 
 ## Return
 
-* `Func<T, Promise<T>>`: A function that takes a value and returns a Promise.
+* `Func<T, Promise<T>>`: A function that takes a value and returns a `Promise`.
 
 ## Examples
 
