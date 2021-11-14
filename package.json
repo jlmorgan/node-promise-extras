@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Collection of extras for Promises.",
   "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {},
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
