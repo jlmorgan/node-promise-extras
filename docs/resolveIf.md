@@ -1,6 +1,6 @@
 # `resolveIf<E, T>(predicate: Predicate<E>, resolution: Func<E, T>): Func<E, Promise<T>>`
 
-Resolves with the `resolution` if the `predicate` returns `true`.
+Creates a function that resolves with the result of the `resolution` if the `predicate` returns `true`.
 
 ## Arguments
 
@@ -9,7 +9,7 @@ Resolves with the `resolution` if the `predicate` returns `true`.
 
 ## Return
 
-* `Func<E, Promise<T>>`: A function that takes a rejected value and returns a Promise.
+* `Func<E, Promise<T>>`: A function that takes a rejected value and returns a `Promise`.
 
 ## Examples
 
@@ -25,15 +25,15 @@ const resolveIfRangeError = resolveIf(
 
 // Rejects
 Promise.reject(new Error("Unknown error"))
-  .then(resolveIfTypeError)
-  .then(resolveIfRangeError); // Error("Unknown error")
+  .catch(resolveIfTypeError)
+  .catch(resolveIfRangeError); // Error("Unknown error")
 
 // Resolves
 Promise.resolve(new TypeError("value must be a number"))
-  .then(resolveIfTypeError)
-  .then(resolveIfRangeError); // 0
+  .catch(resolveIfTypeError)
+  .catch(resolveIfRangeError); // 0
 
 Promise.resolve(new RangeError("value out of range"))
-  .then(resolveIfTypeError)
-  .then(resolveIfRangeError); // -1
+  .catch(resolveIfTypeError)
+  .catch(resolveIfRangeError); // -1
 ```
