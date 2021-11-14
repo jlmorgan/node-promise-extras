@@ -16,11 +16,11 @@ Rejects with the `rejection` if the `predicate` returns `true`.
 ```javascript
 const rejectIfEven = rejectIf(
   value => value % 2 === 0,
-  value => new TypeError(`value ${value} must be odd`)
+  value => new TypeError(`value must be odd; found ${value}`)
 );
 const rejectIfOverMaximum = rejectIf(
   value => value > 10,
-  value => new TypeError(`value ${value} must less than 10`)
+  value => new TypeError(`value must less than 10; found ${value}`)
 );
 
 // Resolves
@@ -31,9 +31,9 @@ Promise.resolve(5)
 // Rejects
 Promise.resolve(2)
   .then(rejectIfEven)
-  .then(rejectIfOverMaximum); // TypeError("value 2 must be odd")
+  .then(rejectIfOverMaximum); // TypeError("value must be odd; found 2")
 
 Promise.resolve(13)
   .then(rejectIfEven)
-  .then(rejectIfOverMaximum); // TypeError("value 13 must be less than 10")
+  .then(rejectIfOverMaximum); // TypeError("value must be less than 10; found 13")
 ```
