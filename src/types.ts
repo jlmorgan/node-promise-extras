@@ -8,6 +8,10 @@ export interface Func<A, B> {
   (a: A): B;
 }
 
+export interface Func2<A, B, C> {
+  (a: A, b: B): C;
+}
+
 export interface Predicate<T> {
   (value: T): boolean;
 }
