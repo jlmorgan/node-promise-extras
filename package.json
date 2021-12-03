@@ -1,10 +1,10 @@
 {
-  "name": "@jlmorgan/promise-extras",
-  "version": "0.0.0",
-  "description": "Collection of extras for Promises.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "author": "Justin Morgan <justin.l.morgan@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/jlmorgan/node-promise-extras/issues"
+  },
   "dependencies": {},
+  "description": "Collection of extras for Promises.",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/chai": "^4.2.22",
@@ -23,20 +23,24 @@
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   },
-  "repository": {
-    "url": "https://github.com/jlmorgan/node-promise-extras",
-    "type": "git"
-  },
-  "scripts": {
-    "build": "rm -rf build && tsc && cp package.json build/dist/src/",
-    "coverage": "nyc npm run test",
-    "lint": "eslint src --ext .ts",
-    "prepare": "npm run build",
-    "test": "mocha"
-  },
+  "homepage": "https://github.com/jlmorgan/node-promise-extras",
   "keywords": [
     "Promise"
   ],
-  "author": "Justin Morgan <justin.l.morgan@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@jlmorgan/promise-extras",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlmorgan/node-promise-extras"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "nyc npm run test",
+    "lint": "eslint --ext .ts src test",
+    "test": "mocha"
+  },
+  "types": "index.d.ts",
+  "version": "0.0.0"
 }

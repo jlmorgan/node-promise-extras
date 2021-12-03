@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2155 # Declare and assign separately to avoid masking return values.
+
+##
+# Setup environment.
+#
+# @see https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+##
+set -o errexit  # Exit immediately if pipeline fails.
+set -o errtrace # Subshells inherit ERR trap.
+set -o pipefail # Return last value of failing pipeline.
+
+declare PROJECT_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
+declare BUILD_SRC_DIR="${PROJECT_HOME}/build/dist/src"
+
+cd "${PROJECT_HOME}" || exit 1;
+
+# Copy package.json into the build/dist/src/ directory and strip the "private" key to enable publishing.
+jq --raw-output \
+  "del(.private)" \
+  < "${PROJECT_HOME}/package.json" \
+  > "${BUILD_SRC_DIR}/package.json"
+
+# Copy project files.
+cp -r \
+  docs \
+  README.md \
+  "${BUILD_SRC_DIR}/"
+
+cd "${BUILD_SRC_DIR}/" \
+  && npm pack --dry-run
