@@ -15,6 +15,19 @@ declare PROJECT_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 
 cd "${PROJECT_HOME}" || exit 1;
 
+__commit_all_changes () {
+  local nextVersion=${1}
+
+  git add -A \
+    && git commit --message "Version bump to ${nextVersion}"
+}
+
+__create_release_branch () {
+  local nextVersion=${1}
+
+  git checkout -b "release/${nextVersion}" origin/dev
+}
+
 __get_current_version () {
   jq --raw-output '.version' < "${PROJECT_HOME}/package.json"
 }
@@ -52,39 +65,39 @@ __has_matching_counts () {
 __update_version () {
   local nextVersion=${1}
 
-  npm --no-git-tag-version version "${nextVersion}"
-  npm --silent install
-  npm audit fix
-}
-
-__create_release_branch () {
-  local nextVersion=${1}
-
-  git checkout -b "release/${nextVersion}" origin/dev
-}
-
-__commit_changes () {
-  local nextVersion=${1}
-
-  git add -A \
-    && git commit --message "Version bump to ${nextVersion}"
+  npm --no-git-tag-version version "${nextVersion}" \
+    && npm --silent install \
+    && npm audit fix
 }
 
 __promote () {
+  local hashes=$(__get_hashes)
+  local semvers=$(__get_semvers)
+  local currentBranch=$(git rev-parse --abbrev-ref HEAD)
   local currentVersion=$(__get_current_version)
   local maxSemVer=$(__get_max_semver)
+  local nextVersion=$(__get_next_version)
   local semVers=($(__get_semvers))
   local semVersJoined=$(printf ",%s" "${semVers[@]}")
-  local nextVersion=$(__get_next_version)
 
   echo "Current Version: ${currentVersion}" 1>&2
   echo "SemVer Levels: ${semVersJoined:1}" 1>&2
   echo "Max SemVer: ${maxSemVer}" 1>&2
   echo "Next Version: ${nextVersion}" 1>&2
 
-  __create_release_branch "${nextVersion}" \
-    && __update_version "${nextVersion}" \
-    && __commit_changes "${nextVersion}"
+  if [[ "${currentBranch}" == "dev" ]]; then
+    if [[ $(__has_matching_counts) == true ]]; then
+      __create_release_branch "${nextVersion}" \
+        && __update_version "${nextVersion}" \
+        && __commit_all_changes "${nextVersion}"
+    else
+      echo "error: Expected count of ${#semvers[@]} semvers to match count of ${#hashes[@]} hashes" 1>&2
+      exit 1
+    fi
+  else
+    echo "error: Expected current branch to be dev; found ${currentBranch}" 1>&2
+    exit 1
+  fi
 }
 
 __promote
