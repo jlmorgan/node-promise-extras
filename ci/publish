@@ -14,4 +14,4 @@ declare PROJECT_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 
 cd "${PROJECT_HOME}/build/dist/src" || exit 1;
 
-npm publish
+npm publish --access public
