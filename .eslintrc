@@ -20,6 +20,7 @@
         "@typescript-eslint/no-unused-vars": "off",
         "max-lines-per-function": "off",
         "no-console": "off",
+        "no-magic-numbers": "off",
         "no-unused-vars": "off"
       }
     }
@@ -29,6 +30,12 @@
   },
   "root": true,
   "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "none"
+      }
+    ],
     "accessor-pairs": "off",
     "array-bracket-newline": [
       "error",
@@ -421,7 +428,7 @@
     "no-useless-rename": "error",
     "no-useless-return": "error",
     "no-var": "error",
-    "no-void": "warn",
+    "no-void": "off",
     "no-warning-comments": "warn",
     "no-whitespace-before-property": "error",
     "no-with": "error",
@@ -551,7 +558,12 @@
       "error",
       "last"
     ],
-    "sort-imports": "error",
+    "sort-imports": [
+      "error",
+      {
+        "allowSeparatedGroups": true
+      }
+    ],
     "sort-keys": [
       "error",
       "asc",
