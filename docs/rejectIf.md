@@ -1,10 +1,10 @@
-# `rejectIf<T, E>(predicate: Predicate<T>, rejection: Func<T, E>): Func<T, Promise<T>>`
+# `rejectIf<T, E>(predicate: PredicatePromise<T>, rejection: Func<T, E>): Func<T, Promise<T>>`
 
 Creates a function that rejects with the result of the `rejection` if the `predicate` returns `true`.
 
 ## Arguments
 
-* `predicate: Predicate<T>`: Determines whether or not to reject the `Promise`.
+* `predicate: PredicatePromise<T>`: Determines whether or not to reject the `Promise`.
 * `rejection: Func<T, E>`: Provides the rejection for the given `value`.
 
 ## Return
@@ -19,7 +19,7 @@ const rejectIfEven = rejectIf(
   value => new TypeError(`value must be odd; found ${value}`)
 );
 const rejectIfOverMaximum = rejectIf(
-  value => value > 10,
+  value => Promise.resolve(value > 10),
   value => new TypeError(`value must less than 10; found ${value}`)
 );
 

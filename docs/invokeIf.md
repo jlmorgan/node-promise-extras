@@ -1,10 +1,10 @@
-# `invokeIf<T, U>(predicate: Predicate<T>, morphism: Func<T, U>): Func<T, Promise<T | U>>`
+# `invokeIf<T, U>(predicate: PredicatePromise<T>, morphism: Func<T, U>): Func<T, Promise<T | U>>`
 
 Creates a function that applies the `morphism` if the `predicate` returns `true`.
 
 ## Arguments
 
-* `predicate: Predicate<T>`: Determines whether or not to invoke the `morphism`.
+* `predicate: PredicatePromise<T>`: Determines whether or not to invoke the `morphism`.
 * `morphism: Func<T, U>`: The morphism.
 
 ## Return
@@ -19,13 +19,13 @@ const incrementIfEven = invokeIf(
   value => value + 1
 );
 const doubleIfOdd = invokeIf(
-  value => value % 2 === 1,
+  value => Promise.resolve(value % 2 === 1),
   value => value * 2
 );
 const halfIfOver50 = invokeIf(
   value => value > 50,
   value => value / 2
-)
+);
 
 Promise.resolve(10)
   .then(incrementIfEven) // 11

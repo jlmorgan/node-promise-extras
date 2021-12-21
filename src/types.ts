@@ -16,6 +16,10 @@ export interface Predicate<T> {
   (value: T): boolean;
 }
 
+export interface PredicatePromise<T> {
+  (value: T): boolean | Promise<boolean>;
+}
+
 export interface Supplier<T> {
   (): T;
 }

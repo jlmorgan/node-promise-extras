@@ -10,10 +10,10 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("resolveIf", () => {
-  const testPredicate = (error: Error) => error instanceof TypeError;
   const testResolution = (_error: Error) => 1;
 
   it("should resolve with a value when the predicate returns true", () => {
+    const testPredicate = (error: Error) => error instanceof TypeError;
     const testError = new TypeError();
     const actualResult = Promise.reject(testError)
       .catch(resolveIf(testPredicate, testResolution));
@@ -23,6 +23,7 @@ describe("resolveIf", () => {
   });
 
   it("should reject with the error when the predicate returns false", () => {
+    const testPredicate = (error: Error) => Promise.resolve(error instanceof TypeError);
     const testError = new Error("Unknown error");
     const actualResult = Promise.reject(testError)
       .catch(resolveIf(testPredicate, testResolution));

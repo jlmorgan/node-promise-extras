@@ -10,10 +10,10 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("rejectIf", () => {
-  const testPredicate = (value: number) => value % 2 === 0;
   const testRejection = (value: number) => new TypeError(`value ${value} must be odd`);
 
   it("should reject the value when the predicate returns true", () => {
+    const testPredicate = (value: number) => value % 2 === 0;
     const testValue = 0;
     const actualResult = Promise.resolve(testValue)
       .then(rejectIf(testPredicate, testRejection));
@@ -24,6 +24,7 @@ describe("rejectIf", () => {
   });
 
   it("should resolve the value when the predicate returns false", () => {
+    const testPredicate = (value: number) => Promise.resolve(value % 2 === 0);
     const testValue = 1;
     const actualResult = Promise.resolve(testValue)
       .then(rejectIf(testPredicate, testRejection));
