@@ -10,10 +10,10 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("invokeIf", () => {
-  const testPredicate = (value: number) => value % 2 === 0;
   const testMorphism = (value: number) => value * 2;
 
   it("should invoke when the predicate returns true", () => {
+    const testPredicate = (value: number) => value % 2 === 0;
     const testValue = 10;
     const actualResult = Promise.resolve(testValue)
       .then(invokeIf(testPredicate, testMorphism));
@@ -23,6 +23,7 @@ describe("invokeIf", () => {
   });
 
   it("should not invoke when the predicate returns false", () => {
+    const testPredicate = (value: number) => Promise.resolve(value % 2 === 0);
     const testValue = 1;
     const actualResult = Promise.resolve(testValue)
       .then(invokeIf(testPredicate, testMorphism));
