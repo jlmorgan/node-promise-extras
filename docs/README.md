@@ -1,5 +1,6 @@
 # Promise Extras
 
+* [`defer(duration)`][defer]
 * [`fulfillments(promises)`][fulfillments]
 * [`invokeIf(predicate, morphism)`][invokeIf]
 * [`partitionPromises(promises)`][partitionPromises]
@@ -9,6 +10,7 @@
 * [`resolveIf(predicate, resolution)`][resolveIf]
 * [`zipPromiseWith(f, g)`][zipPromiseWith]
 
+[defer]: ./defer.md
 [fulfillments]: ./fulfillments.md
 [invokeIf]: ./invokeIf.md
 [partitionPromises]: ./partitionPromises.md
