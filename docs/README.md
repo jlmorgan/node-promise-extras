@@ -8,6 +8,7 @@
 * [`rejectIf(predicate, rejection)`][rejectIf]
 * [`rejections(promises)`][rejections]
 * [`resolveIf(predicate, resolution)`][resolveIf]
+* [`retry(params)`][retry]
 * [`zipPromiseWith(f, g)`][zipPromiseWith]
 
 [defer]: ./defer.md
@@ -18,4 +19,5 @@
 [rejectIf]: ./rejectIf.md
 [rejections]: ./rejections.md
 [resolveIf]: ./resolveIf.md
+[retry]: ./retry.md
 [zipPromiseWith]: ./zipPromiseWith.md
