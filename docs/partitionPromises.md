@@ -1,10 +1,15 @@
-# `partitionPromises<T, E>(promises: Promise<T>[]): Promise<[E[], T[]]>`
+# `partitionPromises(promises, PromiseCtor = Promise)`
+
+```typescript
+function partitionPromises<T, E>(promises: Promise<T>[]): Promise<[E[], T[]]>;
+```
 
 Partitions a list of promises into its respective rejections and fulfillments.
 
 ## Arguments
 
 * `promises: Promise<T>[]`: List of promises.
+* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 

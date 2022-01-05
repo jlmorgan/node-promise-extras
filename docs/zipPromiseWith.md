@@ -1,4 +1,8 @@
-# `zipPromiseWith<A, B, C, E>(f: Func2<B, A, C>, g: Func2<B, E, C>): Func2<Promise<B>, Promise<A>, Promise<C>>`
+# `zipPromiseWith(f, g)`
+
+```typescript
+function zipPromiseWith<A, B, C, E>(f: Func2<B, A, C>, g: Func2<B, E, C>): Func2<Promise<B>, Promise<A>, Promise<C>>;
+```
 
 Zips the two promises.
 

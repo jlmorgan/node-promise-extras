@@ -1,4 +1,4 @@
-import { Predicate, Supplier } from "../types";
+import { PredicatePromise, PromiseConstructor, SupplierPromise } from "../types";
 import { OnRetry } from "./OnRetry";
 
 export interface RetryParams<T, E = never> {
@@ -14,7 +14,7 @@ export interface RetryParams<T, E = never> {
    *
    * @default - Always returns true.
    */
-  errorEquals?: Predicate<E>;
+  errorEquals?: PredicatePromise<E>;
 
   /**
    * Base interval to delay before retrying in milliseconds.
@@ -38,7 +38,14 @@ export interface RetryParams<T, E = never> {
   onRetry?: OnRetry<E>;
 
   /**
+   * Optional Promise constructor implementation.
+   *
+   * @default Promise
+   */
+  PromiseCtor?: PromiseConstructor;
+
+  /**
    * Value supplying function to execute for each retry attempt.
    */
-  supplier: Supplier<T>;
+  supplier: SupplierPromise<T>;
 }
