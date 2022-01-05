@@ -1,3 +1,4 @@
+export * from "./defer";
 export * from "./fulfillments";
 export * from "./invokeIf";
 export * from "./partitionPromises";
