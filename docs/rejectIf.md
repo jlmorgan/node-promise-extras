@@ -1,4 +1,8 @@
-# `rejectIf<T, E>(predicate: PredicatePromise<T>, rejection: Func<T, E>): Func<T, Promise<T>>`
+# `rejectIf(predicate, rejection, PromiseCtor = Promise)`
+
+```typescript
+function rejectIf<T, E>(predicate: PredicatePromise<T>, rejection: Func<T, E>): BindPromise<T, T>;
+```
 
 Creates a function that rejects with the result of the `rejection` if the `predicate` returns `true`.
 
@@ -6,10 +10,11 @@ Creates a function that rejects with the result of the `rejection` if the `predi
 
 * `predicate: PredicatePromise<T>`: Determines whether or not to reject the `Promise`.
 * `rejection: Func<T, E>`: Provides the rejection for the given `value`.
+* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 
-* `Func<T, Promise<T>>`: A function that takes a value and returns a `Promise`.
+* `BindPromise<T, T>`: A function that takes a value and returns a `Promise`.
 
 ## Examples
 

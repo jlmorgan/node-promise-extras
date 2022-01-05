@@ -1,13 +1,13 @@
 # Promise Extras
 
-* [`defer(duration)`][defer]
-* [`fulfillments(promises)`][fulfillments]
-* [`invokeIf(predicate, morphism)`][invokeIf]
-* [`partitionPromises(promises)`][partitionPromises]
-* [`pipeThen(f, g)`][pipeThen]
-* [`rejectIf(predicate, rejection)`][rejectIf]
-* [`rejections(promises)`][rejections]
-* [`resolveIf(predicate, resolution)`][resolveIf]
+* [`defer(duration, PromiseCtor = Promise)`][defer]
+* [`fulfillments(promises, PromiseCtor = Promise)`][fulfillments]
+* [`invokeIf(predicate, morphism, PromiseCtor = Promise)`][invokeIf]
+* [`partitionPromises(promises, PromiseCtor = Promise)`][partitionPromises]
+* [`pipeThen(f, g, PromiseCtor = Promise)`][pipeThen]
+* [`rejectIf(predicate, rejection, PromiseCtor = Promise)`][rejectIf]
+* [`rejections(promises, PromiseCtor = Promise)`][rejections]
+* [`resolveIf(predicate, resolution, PromiseCtor = Promise)`][resolveIf]
 * [`retry(params)`][retry]
 * [`zipPromiseWith(f, g)`][zipPromiseWith]
 

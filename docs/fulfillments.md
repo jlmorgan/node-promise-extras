@@ -1,10 +1,15 @@
-# `fulfillments<T>(promises: Promise<T>[]): Promise<T[]>`
+# `fulfillments(promises, PromiseCtor = Promise)`
+
+```typescript
+function fulfillments<T>(promises: Promise<T>[]): Promise<T[]>;
+```
 
 Extracts from a list of `Promise` all of the `fulfilled` elements in extracted order.
 
 ## Arguments
 
 * `promises: Promise<T>[]`: List of promises.
+* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 

@@ -1,20 +1,23 @@
 // Project
-import { Predicate, Supplier } from "../types";
+import { PredicatePromise, PromiseConstructor, SupplierPromise } from "../types";
+import { defer } from "../defer";
 import { OnRetry } from "./OnRetry";
 import { RetryError } from "../error/RetryError";
 import { RetryParams } from "./RetryParams";
-import { defer } from "../defer";
+import { resolveIf } from "../resolveIf";
 
 interface RetryingParams<T, E = never> {
   backOffRate: number;
-  errorEquals: Predicate<E>;
+  errorEquals: PredicatePromise<E>;
   intervalMilliseconds: number;
   maxAttempts: number;
+  PromiseCtor: PromiseConstructor;
   onRetry: OnRetry<E>;
-  supplier: Supplier<T>;
+  supplier: SupplierPromise<T>;
 }
 
 function retrying<T, E = never>(params: RetryingParams<T, E>, attempts = 0, error?: E): Promise<T> {
+  const { PromiseCtor } = params;
   const duration = params.intervalMilliseconds * (params.backOffRate ** attempts);
 
   if (attempts > 0) {
@@ -22,11 +25,11 @@ function retrying<T, E = never>(params: RetryingParams<T, E>, attempts = 0, erro
   }
 
   return attempts > params.maxAttempts ?
-    Promise.reject(new RetryError(params.maxAttempts)) :
-    Promise.resolve(params.supplier())
-      .catch((caughtError: E) => (params.errorEquals(caughtError) ?
-        defer<T>(duration)(() => retrying(params, attempts + 1, caughtError)) :
-        Promise.reject(caughtError)
+    PromiseCtor.reject(new RetryError(params.maxAttempts)) :
+    PromiseCtor.resolve(params.supplier())
+      .catch(resolveIf(
+        (caughtError: E) => params.errorEquals(caughtError),
+        (caughtError: E) => defer<T>(duration)(() => retrying(params, attempts + 1, caughtError))
       ));
 }
 
@@ -35,7 +38,8 @@ const retryDefaults = {
   errorEquals: () => true,
   intervalMilliseconds: 1000,
   maxAttempts: 3,
-  onRetry: () => void 0
+  onRetry: () => void 0,
+  PromiseCtor: Promise
 };
 
 /**
@@ -59,6 +63,7 @@ export function retry<T, E>(params: RetryParams<T, E>): Promise<T> {
     intervalMilliseconds = retryDefaults.intervalMilliseconds,
     maxAttempts = retryDefaults.maxAttempts,
     onRetry = retryDefaults.onRetry,
+    PromiseCtor = retryDefaults.PromiseCtor,
     supplier
   } = params;
 
@@ -68,6 +73,7 @@ export function retry<T, E>(params: RetryParams<T, E>): Promise<T> {
     intervalMilliseconds,
     maxAttempts,
     onRetry,
+    PromiseCtor,
     supplier
   });
 }

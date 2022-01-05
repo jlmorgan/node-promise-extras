@@ -1,4 +1,3 @@
-
 export interface OnRetry<E> {
   /**
    * @param {number} attempts - Number of retry attempts made.

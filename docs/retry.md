@@ -1,4 +1,8 @@
-# `retry<T, E>(params: RetryParams<T, E>): Promise<T>`
+# `retry(params)`
+
+```typescript
+function retry<T, E>(params: RetryParams<T, E>): Promise<T>;
+```
 
 Retries the `supplier` when `errorEquals` returns `true` by waiting `intervalMilliseconds` (`i`) multiplied by the `backOffRate` (`b`) to the power of the number of `attempts` (`a`) (i.e., `i * b ^ a`) made until the `maxAttempts` is reached. For a fully failed example with defaults,
 
@@ -12,11 +16,12 @@ Retries the `supplier` when `errorEquals` returns `true` by waiting `intervalMil
 
 * `params: RetryParams<T, E>`: Retry params.
   * `backOffRate?: number`: Base back off rate used to compute the delay before the next retry (default `2`).
-  * `errorEquals?: Predicate<E>`: Determines whether or not retries should continue based on the rejected/caught value (default always returns `true`).
+  * `errorEquals?: PredicatePromise<E>`: Determines whether or not retries should continue based on the rejected/caught value (default always returns `true`).
   * `intervalMilliseconds?: number`: Base interval to delay before retrying in milliseconds (default `1000`).
   * `maxAttempts?: number`: Maximum number of retry attempts to make (default `3`).
   * `onRetry?: OnRetry<E>`: Side effect to execute upon each retry attempt (default does nothing; see [OnRetry][]).
-  * `supplier: Supplier<T>`: Value supplying function to execute for each retry attempt.
+  * `PromiseCtor?: PromiseConstructor`: Optional Promise constructor implementation.
+  * `supplier: SupplierPromise<T>`: Value supplying function to execute for each retry attempt.
 
 ## Return
 
@@ -28,7 +33,7 @@ Retries the `supplier` when `errorEquals` returns `true` by waiting `intervalMil
 // Using a fictional client that returns categorical errors.
 function getItem(id) {
   return retry({
-    errorEquals: error => error instanceof ServerError,errors.
+    errorEquals: error => error instanceof ServerError,
     onRetry: (attempts, delay, error) => console.error({ attempts, delay, error }),
     supplier: () => client.get(id)
   });

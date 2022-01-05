@@ -1,4 +1,8 @@
-# `invokeIf<T, U>(predicate: PredicatePromise<T>, morphism: Func<T, U>): Func<T, Promise<T | U>>`
+# `invokeIf(predicate, morphism, PromiseCtor = Promise)`
+
+```typescript
+function invokeIf<T, U>(predicate: PredicatePromise<T>, morphism: Func<T, U>): BindPromise<T, T | U>;
+```
 
 Creates a function that applies the `morphism` if the `predicate` returns `true`.
 
@@ -6,10 +10,11 @@ Creates a function that applies the `morphism` if the `predicate` returns `true`
 
 * `predicate: PredicatePromise<T>`: Determines whether or not to invoke the `morphism`.
 * `morphism: Func<T, U>`: The morphism.
+* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 
-* `Func<T, Promise<T>>`: A function that takes a value and returns a `Promise`.
+* `BindPromise<T, T | U>`: A function that takes a value and returns a `Promise`.
 
 ## Examples
 

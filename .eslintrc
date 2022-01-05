@@ -30,6 +30,7 @@
   },
   "root": true,
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -83,7 +84,7 @@
         "ignoreInlineComments": true
       }
     ],
-    "class-methods-use-this": "error",
+    "class-methods-use-this": "off",
     "comma-dangle": [
       "error",
       "never"
@@ -305,7 +306,7 @@
     "no-delete-var": "error",
     "no-div-regex": "warn",
     "no-dupe-args": "error",
-    "no-dupe-class-members": "error",
+    "no-dupe-class-members": "off",
     "no-dupe-keys": "error",
     "no-duplicate-case": "error",
     "no-duplicate-imports": "error",
@@ -559,12 +560,7 @@
       "error",
       "last"
     ],
-    "sort-imports": [
-      "error",
-      {
-        "allowSeparatedGroups": true
-      }
-    ],
+    "sort-imports": "off",
     "sort-keys": [
       "error",
       "asc",
