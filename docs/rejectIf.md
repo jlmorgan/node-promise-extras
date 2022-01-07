@@ -25,7 +25,7 @@ const rejectIfEven = rejectIf(
 );
 const rejectIfOverMaximum = rejectIf(
   value => Promise.resolve(value > 10),
-  value => new TypeError(`value must less than 10; found ${value}`)
+  value => new RangeError(`value must less than 10; found ${value}`)
 );
 
 // Resolves
@@ -40,5 +40,5 @@ Promise.resolve(2)
 
 Promise.resolve(13)
   .then(rejectIfEven)
-  .then(rejectIfOverMaximum); // TypeError("value must be less than 10; found 13")
+  .then(rejectIfOverMaximum); // RangeError("value must be less than 10; found 13")
 ```

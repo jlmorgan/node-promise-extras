@@ -1,5 +1,6 @@
 export * from "./defer";
 export * from "./error";
+export * from "./filterIf";
 export * from "./fulfillments";
 export * from "./invokeIf";
 export * from "./partitionPromises";
