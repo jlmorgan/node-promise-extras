@@ -1,6 +1,7 @@
 # Promise Extras
 
 * [`defer(duration, PromiseCtor = Promise)`][defer]
+* [`filterIf(predicate, rejection, PromiseCtor = Promise)`][filterIf]
 * [`fulfillments(promises, PromiseCtor = Promise)`][fulfillments]
 * [`invokeIf(predicate, morphism, PromiseCtor = Promise)`][invokeIf]
 * [`partitionPromises(promises, PromiseCtor = Promise)`][partitionPromises]
@@ -12,6 +13,7 @@
 * [`zipPromiseWith(f, g)`][zipPromiseWith]
 
 [defer]: ./defer.md
+[filterIf]: ./filterIf.md
 [fulfillments]: ./fulfillments.md
 [invokeIf]: ./invokeIf.md
 [partitionPromises]: ./partitionPromises.md
