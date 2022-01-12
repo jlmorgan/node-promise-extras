@@ -1,4 +1,8 @@
-# `pipeThen<A, B, C>(f: OnFulfilled<A, B>, g: OnFulfilled<B, C>): Func<A | PromiseLike<A>, Promise<A | B | C>>`
+# `pipeThen(f, g, PromiseCtor = Promise)`
+
+```typescript
+function pipeThen<A, B, C>(f: OnFulfilled<A, B>, g: OnFulfilled<B, C>): Func<A | PromiseLike<A>, Promise<A | B | C>>;
+```
 
 Composes two functions; applying `f` before `g`.
 
@@ -6,6 +10,7 @@ Composes two functions; applying `f` before `g`.
 
 * `f: OnFulfilled<A, B>`: The first function.
 * `g: OnFulfilled<B, C>`: The second function.
+* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 
