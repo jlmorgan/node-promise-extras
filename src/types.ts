@@ -5,7 +5,7 @@ export interface Action {
 }
 
 export interface BindPromise<A, B> {
-  (a: A): PromiseLike<B>;
+  (a: A): Promise<B>;
 }
 
 export interface Consumer<A> {
@@ -17,7 +17,7 @@ export interface Func<A, B> {
 }
 
 export interface FuncPromise<A, B> {
-  (a: A): B | PromiseLike<B>;
+  (a: A): B | Promise<B>;
 }
 
 export interface Func2<A, B, C> {
@@ -29,7 +29,7 @@ export interface Predicate<T> {
 }
 
 export interface PredicatePromise<T> {
-  (value: T): boolean | PromiseLike<boolean>;
+  (value: T): boolean | Promise<boolean>;
 }
 
 export interface Supplier<T> {
@@ -37,7 +37,7 @@ export interface Supplier<T> {
 }
 
 export interface SupplierPromise<T> {
-  (): T | PromiseLike<T>;
+  (): T | Promise<T>;
 }
 
 export interface OnFulfilled<T, TResult1 = T> {
