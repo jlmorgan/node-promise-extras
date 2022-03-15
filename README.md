@@ -19,7 +19,7 @@ npm install --save @jlmorgan/promise-extras
 ```javascript
 const { rejectIf } = require("@jlmorgan/promise-extras");
 // or
-const resolveIf = require("@jlmorgan/promise-extras/resolveIf");
+const { resolveIf } = require("@jlmorgan/promise-extras/resolveIf");
 ```
 
 ### Typescript
@@ -27,7 +27,7 @@ const resolveIf = require("@jlmorgan/promise-extras/resolveIf");
 ```typescript
 import { rejectIf } from "@jlmorgan/promise-extras";
 // or
-import resolveIf from "@jlmorgan/promise-extras/resolveIf";
+import { resolveIf } from "@jlmorgan/promise-extras/resolveIf";
 ```
 
 [Docs]: ./docs/
