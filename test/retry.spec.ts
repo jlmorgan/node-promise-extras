@@ -11,7 +11,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("retry", () => {
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     const testParams = {
       intervalMilliseconds: 10
     };
@@ -65,7 +65,7 @@ describe("retry", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     const testParams = {
       intervalMilliseconds: 10,
       PromiseCtor: Bluebird

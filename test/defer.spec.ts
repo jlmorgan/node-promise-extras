@@ -11,7 +11,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("defer", () => {
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     it("should return the result after waiting", () => {
       const testDuration = 100; // Milliseconds
       const testStartTime = Date.now();
@@ -23,7 +23,7 @@ describe("defer", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     it("should return the result after waiting", () => {
       const testDuration = 100; // Milliseconds
       const testStartTime = Date.now();
