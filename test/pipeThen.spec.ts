@@ -11,7 +11,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("pipeThen", () => {
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     it("should apply both functions", () => {
       const testPromise = Promise.resolve(1);
       const testFirstFunction = (value: number) => value + 1;
@@ -23,7 +23,7 @@ describe("pipeThen", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     it("should apply both functions", () => {
       const testPromise = Promise.resolve(1);
       const testFirstFunction = (value: number) => value + 1;

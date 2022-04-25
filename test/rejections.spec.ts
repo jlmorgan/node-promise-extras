@@ -11,7 +11,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("rejections", () => {
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     it("should return the rejections", () => {
       const testPromises = [
         Promise.resolve(0),
@@ -26,7 +26,7 @@ describe("rejections", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     it("should return the rejections", () => {
       const testPromises = [
         Promise.resolve(0),
