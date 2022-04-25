@@ -11,33 +11,16 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("fulfillments", () => {
-  context("default Promise PromiseCtor", () => {
-    it("should return the fulfillments", () => {
-      const testPromises = [
-        Promise.resolve(0),
-        Promise.reject("a"),
-        Promise.resolve(1),
-        Promise.reject("b")
-      ];
-      const actualResults = fulfillments(testPromises);
-      const expectedResults = [0, 1];
+  it("should return the fulfillments", () => {
+    const testPromises = [
+      Promise.resolve(0),
+      Promise.reject("a"),
+      Promise.resolve(1),
+      Promise.reject("b")
+    ];
+    const actualResults = fulfillments(testPromises);
+    const expectedResults = [0, 1];
 
-      return expect(actualResults).to.eventually.deep.eq(expectedResults);
-    });
-  });
-
-  context("custom Promise PromiseCtor", () => {
-    it("should return the fulfillments", () => {
-      const testPromises = [
-        Promise.resolve(0),
-        Promise.reject("a"),
-        Promise.resolve(1),
-        Promise.reject("b")
-      ];
-      const actualResults = fulfillments(testPromises, Bluebird);
-      const expectedResults = [0, 1];
-
-      return expect(actualResults).to.eventually.deep.eq(expectedResults);
-    });
+    return expect(actualResults).to.eventually.deep.eq(expectedResults);
   });
 });

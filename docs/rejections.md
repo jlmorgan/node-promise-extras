@@ -1,4 +1,4 @@
-# `rejections(promises, PromiseCtor = Promise)`
+# `rejections(promises)`
 
 ```typescript
 function rejections<T, E>(promises: Promise<T>[]): Promise<E[]>;
@@ -9,7 +9,6 @@ Extracts from a list of `Promise` all of the `rejected` elements in extracted or
 ## Arguments
 
 * `promises: Promise<T>[]`: List of promises.
-* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 

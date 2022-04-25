@@ -1,4 +1,5 @@
-import { PredicatePromise, PromiseConstructor, SupplierPromise } from "../types";
+// Project
+import { PredicatePromise, SupplierPromise } from "../types";
 import { OnRetry } from "./OnRetry";
 
 export interface RetryParams<T, E = never> {
@@ -36,13 +37,6 @@ export interface RetryParams<T, E = never> {
    * @default - Do nothing.
    */
   onRetry?: OnRetry<E>;
-
-  /**
-   * Optional Promise constructor implementation.
-   *
-   * @default Promise
-   */
-  PromiseCtor?: PromiseConstructor;
 
   /**
    * Value supplying function to execute for each retry attempt.

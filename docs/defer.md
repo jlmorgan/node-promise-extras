@@ -1,7 +1,7 @@
-# `defer(duration, PromiseCtor = Promise)`
+# `defer(duration)`
 
 ```typescript
-function defer<T>(duration: number, PromiseCtor: PromiseConstructor = Promise): Func<SupplierPromise<T>, Promise<T>>;
+function defer<T>(duration: number): Func<SupplierPromise<T>, Promise<T>>;
 ```
 
 Creates a function that applies the `morphism` if the `predicate` returns `true`.
@@ -9,7 +9,6 @@ Creates a function that applies the `morphism` if the `predicate` returns `true`
 ## Arguments
 
 * `duration: number`: Duration of time in milliseconds to wait before execution.
-* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 

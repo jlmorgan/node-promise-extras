@@ -1,4 +1,4 @@
-# `filterIf(predicate, rejection, PromiseCtor = Promise)`
+# `filterIf(predicate, rejection)`
 
 ```typescript
 function filterIf<T, E>(predicate: PredicatePromise<T>, rejection: Func<T, E>): BindPromise<T, T>;
@@ -10,7 +10,6 @@ Creates a function that rejects with the result of the `rejection` if the `predi
 
 * `predicate: PredicatePromise<T>`: Determines whether or not to filter the `Promise`.
 * `rejection: Func<T, E>`: Provides the rejection for the given `value`.
-* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 

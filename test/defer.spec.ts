@@ -11,27 +11,13 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("defer", () => {
-  context("default Promise PromiseCtor", () => {
-    it("should return the result after waiting", () => {
-      const testDuration = 100; // Milliseconds
-      const testStartTime = Date.now();
-      const testSupplier = () => Date.now();
-      const actualResult = defer<number>(testDuration)(testSupplier)
-        .then(testEndTime => testEndTime - testStartTime >= testDuration);
+  it("should return the result after waiting", () => {
+    const testDuration = 100; // Milliseconds
+    const testStartTime = Date.now();
+    const testSupplier = () => Date.now();
+    const actualResult = defer<number>(testDuration)(testSupplier)
+      .then(testEndTime => testEndTime - testStartTime >= testDuration);
 
-      return expect(actualResult).to.eventually.be.true;
-    });
-  });
-
-  context("custom Promise PromiseCtor", () => {
-    it("should return the result after waiting", () => {
-      const testDuration = 100; // Milliseconds
-      const testStartTime = Date.now();
-      const testSupplier = () => Date.now();
-      const actualResult = defer<number>(testDuration, Bluebird)(testSupplier)
-        .then(testEndTime => testEndTime - testStartTime >= testDuration);
-
-      return expect(actualResult).to.eventually.be.true;
-    });
+    return expect(actualResult).to.eventually.be.true;
   });
 });
