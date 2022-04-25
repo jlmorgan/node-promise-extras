@@ -1,5 +1,6 @@
 # Promise Extras
 
+* [`attempt(supplier, PromiseCtor = Promise)`][attempt]
 * [`defer(duration, PromiseCtor = Promise)`][defer]
 * [`filterIf(predicate, rejection, PromiseCtor = Promise)`][filterIf]
 * [`fulfillments(promises, PromiseCtor = Promise)`][fulfillments]
@@ -12,6 +13,7 @@
 * [`retry(params)`][retry]
 * [`zipPromiseWith(f, g)`][zipPromiseWith]
 
+[attempt]: ./attempt.md
 [defer]: ./defer.md
 [filterIf]: ./filterIf.md
 [fulfillments]: ./fulfillments.md

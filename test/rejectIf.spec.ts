@@ -13,7 +13,7 @@ const { expect } = chai;
 describe("rejectIf", () => {
   const testRejection = (value: number) => new TypeError(`value ${value} must be odd`);
 
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     it("should reject the value when the predicate returns true", () => {
       const testPredicate = (value: number) => value % 2 === 0;
       const testValue = 0;
@@ -36,7 +36,7 @@ describe("rejectIf", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     it("should reject the value when the predicate returns true", () => {
       const testPredicate = (value: number) => value % 2 === 0;
       const testValue = 0;

@@ -11,7 +11,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("partitionPromises", () => {
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     it("should partition the rejections and fulfillments", () => {
       const testPromises = [
         Promise.resolve(0),
@@ -26,7 +26,7 @@ describe("partitionPromises", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     it("should partition the rejections and fulfillments", () => {
       const testPromises = [
         Promise.resolve(0),

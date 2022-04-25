@@ -13,7 +13,7 @@ const { expect } = chai;
 describe("invokeIf", () => {
   const testMorphism = (value: number) => value * 2;
 
-  describe("default Promise PromiseCtor", () => {
+  context("default Promise PromiseCtor", () => {
     it("should invoke when the predicate returns true", () => {
       const testPredicate = (value: number) => value % 2 === 0;
       const testValue = 10;
@@ -35,7 +35,7 @@ describe("invokeIf", () => {
     });
   });
 
-  describe("custom Promise PromiseCtor", () => {
+  context("custom Promise PromiseCtor", () => {
     it("should invoke when the predicate returns true", () => {
       const testPredicate = (value: number) => value % 2 === 0;
       const testValue = 10;
