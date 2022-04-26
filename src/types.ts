@@ -48,12 +48,6 @@ export interface OnRejected<TResult2 = never> {
   (reason: any): TResult2 | PromiseLike<TResult2>;
 }
 
-export interface PromiseConstructor {
-  new <T>(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): Promise<T>;
-  reject<T = never>(reason?: any): Promise<T>;
-  resolve<T>(value: T | PromiseLike<T>): Promise<T>;
-}
-
 export interface PromiseExecutor<T> {
   (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void): void;
 }

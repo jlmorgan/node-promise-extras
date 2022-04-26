@@ -11,27 +11,13 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe("pipeThen", () => {
-  context("default Promise PromiseCtor", () => {
-    it("should apply both functions", () => {
-      const testPromise = Promise.resolve(1);
-      const testFirstFunction = (value: number) => value + 1;
-      const testSecondFunction = (value: number) => Promise.resolve(value * 2);
-      const actualResult = pipeThen(testFirstFunction, testSecondFunction)(testPromise);
-      const expectedResult = 4;
+  it("should apply both functions", () => {
+    const testPromise = Promise.resolve(1);
+    const testFirstFunction = (value: number) => value + 1;
+    const testSecondFunction = (value: number) => Promise.resolve(value * 2);
+    const actualResult = pipeThen(testFirstFunction, testSecondFunction)(testPromise);
+    const expectedResult = 4;
 
-      return expect(actualResult).to.eventually.equal(expectedResult);
-    });
-  });
-
-  context("custom Promise PromiseCtor", () => {
-    it("should apply both functions", () => {
-      const testPromise = Promise.resolve(1);
-      const testFirstFunction = (value: number) => value + 1;
-      const testSecondFunction = (value: number) => Promise.resolve(value * 2);
-      const actualResult = pipeThen(testFirstFunction, testSecondFunction, Bluebird)(testPromise);
-      const expectedResult = 4;
-
-      return expect(actualResult).to.eventually.equal(expectedResult);
-    });
+    return expect(actualResult).to.eventually.equal(expectedResult);
   });
 });
