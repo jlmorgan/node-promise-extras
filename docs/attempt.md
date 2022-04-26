@@ -1,7 +1,7 @@
-# `attempt(supplier, PromiseCtor = Promise)`
+# `attempt(supplier)`
 
 ```typescript
-function attempt<T>(supplier: SupplierPromise<T>, PromiseCtor = Promise);
+function attempt<T>(supplier: SupplierPromise<T>);
 ```
 
 Captures the possible `Error` in a rejection; otherwise, the fulfilled `value`.
@@ -9,7 +9,6 @@ Captures the possible `Error` in a rejection; otherwise, the fulfilled `value`.
 ## Arguments
 
 * `SupplierPromise<T> supplier` A supplier of a value.
-* `PromiseCtor: PromiseConstructor = Promise`:  Optional Promise constructor implementation.
 
 ## Return
 

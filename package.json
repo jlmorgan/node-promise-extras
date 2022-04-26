@@ -7,7 +7,6 @@
   "description": "Collection of extras for Promises.",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
-    "@types/bluebird": "^3.5.36",
     "@types/chai": "^4.3.1",
     "@types/chai-as-promised": "^7.1.5",
     "@types/eslint": "^8.4.1",
@@ -16,7 +15,6 @@
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "bluebird": "^3.7.2",
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "eslint": "^8.14.0",
@@ -27,6 +25,7 @@
   },
   "homepage": "https://github.com/jlmorgan/node-promise-extras",
   "keywords": [
+    "attempt",
     "defer",
     "fulfill",
     "fulfillments",
@@ -55,5 +54,5 @@
     "test": "mocha"
   },
   "types": "index.d.ts",
-  "version": "0.4.0"
+  "version": "1.0.0"
 }

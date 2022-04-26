@@ -20,7 +20,6 @@ Retries the `supplier` when `errorEquals` returns `true` by waiting `intervalMil
   * `intervalMilliseconds?: number`: Base interval to delay before retrying in milliseconds (default `1000`).
   * `maxAttempts?: number`: Maximum number of retry attempts to make (default `3`).
   * `onRetry?: OnRetry<E>`: Side effect to execute upon each retry attempt (default does nothing; see [OnRetry][]).
-  * `PromiseCtor?: PromiseConstructor`: Optional Promise constructor implementation.
   * `supplier: SupplierPromise<T>`: Value supplying function to execute for each retry attempt.
 
 ## Return

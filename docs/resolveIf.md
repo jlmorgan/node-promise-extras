@@ -1,4 +1,4 @@
-# `resolveIf(predicate, resolution, PromiseCtor = Promise)`
+# `resolveIf(predicate, resolution)`
 
 ```typescript
 function resolveIf<E, T>(predicate: PredicatePromise<E>, resolution: Func<E, T>): Func<E, Promise<T>>;
@@ -10,7 +10,6 @@ Creates a function that resolves with the result of the `resolution` if the `pre
 
 * `predicate: PredicatePromise<E>`: Determines whether or not to resolve the rejected `Promise`.
 * `resolution: FuncPromise<E, T>`: Provides the resolution for the given `value`.
-* `PromiseCtor: PromiseConstructor = Promise`: Optional Promise constructor implementation.
 
 ## Return
 

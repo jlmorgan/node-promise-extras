@@ -19,41 +19,20 @@ describe("attempt", () => {
     throw new TypeError("value must be even");
   }
 
-  context("default Promise PromiseCtor", () => {
-    it("should fulfill with the value", () => {
-      const testValue = 2;
-      const expectedResult = 2;
-      const actualResult = attempt(() => testFn(testValue));
+  it("should fulfill with the value", () => {
+    const testValue = 2;
+    const expectedResult = 2;
+    const actualResult = attempt(() => testFn(testValue));
 
-      return expect(actualResult).to.eventually.equal(expectedResult);
-    });
-
-    it("should reject with the error", () => {
-      const testValue = 1;
-      const expectedMessage = "value must be even";
-      const expectedType = TypeError;
-      const actualResult = attempt(() => testFn(testValue));
-
-      return expect(actualResult).to.eventually.be.rejectedWith(expectedType, expectedMessage);
-    });
+    return expect(actualResult).to.eventually.equal(expectedResult);
   });
 
-  context("custom Promise PromiseCtor", () => {
-    it("should fulfill with the value", () => {
-      const testValue = 2;
-      const expectedResult = 2;
-      const actualResult = attempt(() => testFn(testValue), Bluebird);
+  it("should reject with the error", () => {
+    const testValue = 1;
+    const expectedMessage = "value must be even";
+    const expectedType = TypeError;
+    const actualResult = attempt(() => testFn(testValue));
 
-      return expect(actualResult).to.eventually.equal(expectedResult);
-    });
-
-    it("should reject with the error", () => {
-      const testValue = 1;
-      const expectedMessage = "value must be even";
-      const expectedType = TypeError;
-      const actualResult = attempt(() => testFn(testValue), Bluebird);
-
-      return expect(actualResult).to.eventually.be.rejectedWith(expectedType, expectedMessage);
-    });
+    return expect(actualResult).to.eventually.be.rejectedWith(expectedType, expectedMessage);
   });
 });
