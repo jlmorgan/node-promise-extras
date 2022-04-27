@@ -1,5 +1,4 @@
 // Third Party
-import Bluebird from "bluebird";
 import chai from "chai";
 import chaiAsPromised from "chai-as-promised";
 
