@@ -1,3 +1,3 @@
 export * from "./retry";
 export * from "./OnRetry";
-export * from "./RetryParams";
+export * from "./RetryOptions";

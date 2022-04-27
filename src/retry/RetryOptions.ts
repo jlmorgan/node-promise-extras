@@ -1,21 +1,14 @@
 // Project
-import { PredicatePromise, SupplierPromise } from "../types";
+import { PredicatePromise } from "../types";
 import { OnRetry } from "./OnRetry";
 
-export interface RetryParams<T, E = never> {
+export interface RetryOptions<E = never> {
   /**
    * Base back off rate used to compute the delay before the next retry.
    *
    * @default 2
    */
   backOffRate?: number;
-
-  /**
-   * Determines whether or not retries should continue based on the rejected/caught value.
-   *
-   * @default - Always returns true.
-   */
-  errorEquals?: PredicatePromise<E>;
 
   /**
    * Base interval to delay before retrying in milliseconds.
@@ -39,7 +32,9 @@ export interface RetryParams<T, E = never> {
   onRetry?: OnRetry<E>;
 
   /**
-   * Value supplying function to execute for each retry attempt.
+   * Determines whether or not should retry based on the rejected/caught value.
+   *
+   * @default - Always returns true.
    */
-  supplier: SupplierPromise<T>;
+  shouldRetry?: PredicatePromise<E>;
 }
