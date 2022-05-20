@@ -42,7 +42,7 @@ function retrying<T, E = never>(params: RetryingParams<T, E>, attempts = 0, erro
   const duration = params.intervalMilliseconds * (params.backOffRate ** attempts);
 
   return attempts > params.maxAttempts ?
-    Promise.reject(new RetryError(params.maxAttempts)) :
+    Promise.reject(new RetryError(params.maxAttempts, error)) :
     Promise.resolve(params.supplier())
       .catch(resolveIf(
         (caughtError: E) => params.shouldRetry(caughtError),
