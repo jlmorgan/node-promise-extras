@@ -8,6 +8,7 @@ export * from "./partitionPromises";
 export * from "./pipeThen";
 export * from "./rejectIf";
 export * from "./rejections";
+export * from "./reRejectIf";
 export * from "./resolveIf";
 export * from "./retry";
 export * from "./zipPromiseWith";

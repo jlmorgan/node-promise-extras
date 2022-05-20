@@ -9,6 +9,7 @@
 * [`pipeThen(f, g)`][pipeThen]
 * [`rejectIf(predicate, rejection)`][rejectIf]
 * [`rejections(promises)`][rejections]
+* [`reRejectIf(predicate, morphism)`][reRejectIf]
 * [`resolveIf(predicate, resolution)`][resolveIf]
 * [`retry(params)`][retry]
 * [`zipPromiseWith(f, g)`][zipPromiseWith]
@@ -22,6 +23,7 @@
 [pipeThen]: ./pipeThen.md
 [rejectIf]: ./rejectIf.md
 [rejections]: ./rejections.md
+[reRejectIf]: ./reRejectIf.md
 [resolveIf]: ./resolveIf.md
 [retry]: ./retry.md
 [zipPromiseWith]: ./zipPromiseWith.md
