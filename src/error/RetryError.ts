@@ -1,9 +1,11 @@
 export class RetryError extends Error {
+  public cause?: any;
   public count: number;
 
-  constructor(count: number) {
+  constructor(count: number, cause?: any) {
     super(`Exceeded maximum number of retry attempts ${count}`);
 
+    this.cause = cause;
     this.count = count;
     this.name = "RetryError";
 
@@ -17,6 +19,7 @@ export class RetryError extends Error {
    */
   toJSON(): object {
     return {
+      cause: this.cause,
       count: this.count,
       message: this.message
     };
