@@ -41,7 +41,7 @@ function applySecond<T>(f: SupplierPromise<any>, g: SupplierPromise<T>): Promise
 function retrying<T, E = never>(params: RetryingParams<T, E>, attempts = 0, error?: E): Promise<T> {
   const duration = params.intervalMilliseconds * (params.backOffRate ** attempts);
 
-  return attempts > params.maxAttempts ?
+  return attempts >= params.maxAttempts ?
     Promise.reject(new RetryError(params.maxAttempts, error)) :
     Promise.resolve(params.supplier())
       .catch(resolveIf(
